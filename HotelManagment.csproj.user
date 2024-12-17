@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Model\frmBookingAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Model\frmCustomerAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Model\frmRoomAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Model\frmTypeAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Model\frmUserAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Sample.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SampleAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SampleView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\frmBookingView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\frmCustomerView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\frmDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\frmRoomTypeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\frmRoomView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\frmUserView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
