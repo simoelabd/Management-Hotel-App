@@ -21,10 +21,6 @@ namespace HotelManagment
         {
 
         }
-        public virtual void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -32,6 +28,11 @@ namespace HotelManagment
         }
 
         public virtual void btnAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public virtual void txtSearch_TextChanged(object sender, EventArgs e)
         {
 
         }

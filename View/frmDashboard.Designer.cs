@@ -40,7 +40,7 @@
             guna2PictureBox1.CustomizableEdges = customizableEdges1;
             guna2PictureBox1.Image = Properties.Resources.hotelLogo1;
             guna2PictureBox1.ImageRotate = 0F;
-            guna2PictureBox1.Location = new Point(203, 80);
+            guna2PictureBox1.Location = new Point(163, 79);
             guna2PictureBox1.Name = "guna2PictureBox1";
             guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges2;
             guna2PictureBox1.Size = new Size(804, 548);

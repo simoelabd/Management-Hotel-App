@@ -103,7 +103,5 @@ namespace HotelManagment.View
                 }
             }
         }
-
-        
     }
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using Guna.UI2.WinForms;
+using Microsoft.Data.SqlClient;
 
 namespace HotelManagment
 {

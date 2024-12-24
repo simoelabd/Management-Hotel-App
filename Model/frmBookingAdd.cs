@@ -7,10 +7,13 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Guna.UI2.WinForms;
 
 namespace HotelManagment.Model
 {
@@ -63,7 +66,28 @@ namespace HotelManagment.Model
 
         public override void btnSave_Click(object sender, EventArgs e)
         {
+
             string qry = "";
+
+            if (string.IsNullOrEmpty(cbCustomer.SelectedValue.ToString()) ||
+                string.IsNullOrEmpty(cbRoom.SelectedValue.ToString()) ||
+                string.IsNullOrEmpty(txtcheckIN.Text) ||
+                string.IsNullOrEmpty(txtcheckout.Text) ||
+                string.IsNullOrEmpty(txtDays.Text) ||
+                string.IsNullOrEmpty(txtPrix.Text) ||
+                string.IsNullOrEmpty(txtAmount.Text) ||
+                string.IsNullOrEmpty(txtRece.Text) ||
+                string.IsNullOrEmpty(txtChange.Text) ||
+                string.IsNullOrEmpty(cbStatus.Text))
+            {
+                guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+                guna2MessageDialog1.Icon = Guna.UI2.WinForms.MessageDialogIcon.Error;
+                guna2MessageDialog1.Caption = "Erreur";
+                guna2MessageDialog1.Text = "Tous les champs doivent être remplis.";
+                guna2MessageDialog1.Show();
+                return; // Arrêter l'exécution si un champ est manquant
+            }
+
             if (id == 0) // Save
             {
                 qry = @"INSERT INTO bookings (customerID, roomID, checkinDate, checkoutDate, status, days, prix, 
@@ -128,6 +152,18 @@ namespace HotelManagment.Model
                 
                 if (r > 0)
                 {
+                    // Envoi d'email après insertion/mise à jour
+                    string emailClient = RecupererEmailClient(customerID);
+
+                    if (!string.IsNullOrEmpty(emailClient))
+                    {
+                        string sujet = "Confirmation de réservation";
+                        string corpsMessage = $"Bonjour,\n\nVotre réservation pour la chambre '{cbRoom.Text}' " +
+                            $"du {checkinDate:dd/MM/yyyy} au {checkoutDate:dd/MM/yyyy} a été confirmée.\n\n" +
+                            $"Montant total : {amount} MAD.\n\nMerci de nous avoir choisir !";
+
+                        EnvoyerEmailReservation(emailClient, sujet, corpsMessage);
+                    }
                     MainClass.ClearAll(this);
                     guna2MessageDialog1.Show("Saved successfully");
                     id = 0;
@@ -135,11 +171,70 @@ namespace HotelManagment.Model
             }
             catch (Exception ex)
             {
-                guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
-                guna2MessageDialog1.Icon = Guna.UI2.WinForms.MessageDialogIcon.Error;
-                guna2MessageDialog1.Caption = "Erreur";
-                guna2MessageDialog1.Text = "Une erreur est survenue : " + ex.Message;
-                guna2MessageDialog1.Show();
+                guna2MessageDialog1.Show("Une erreur est survenue : " + ex.Message);
+            }
+        }
+
+        private string RecupererEmailClient(int customerID)
+        {
+            string email = string.Empty;
+
+            try
+            {
+                string query = "SELECT cEmail FROM customers WHERE cusID = @customerID";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, MainClass.con))
+                {
+                    cmd.Parameters.AddWithValue("@customerID", customerID);
+
+                    if (MainClass.con.State != ConnectionState.Open)
+                    {
+                        MainClass.con.Open();
+                    }
+
+                    object result = cmd.ExecuteScalar();
+                    if (result != null)
+                    {
+                        email = result.ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de la récupération de l'email : " + ex.Message);
+            }
+            finally
+            {
+                if (MainClass.con.State == ConnectionState.Open)
+                {
+                    MainClass.con.Close();
+                }
+            }
+
+            return email;
+        }
+
+        private void EnvoyerEmailReservation(string destinataire, string sujet, string corpsMessage)
+        {
+            try
+            {
+                // Configuration du client SMTP
+                SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+                // Activer SSL pour sécuriser la connexion
+                client.EnableSsl = true;
+                // Authentification
+                client.Credentials = new NetworkCredential("ouledelabd.mohamed@gmail.com", "vuhxyzxihvchqgsa");
+
+                // Création et configuration du message email
+                MailMessage mail = new MailMessage("ouledelabd.mohamed@gmail.com", destinataire, sujet, corpsMessage);
+
+                // Envoi du message
+                client.Send(mail);
+                MessageBox.Show("Email envoyé avec succès !");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de l'envoi de l'email : " + ex.Message);
             }
         }
 
@@ -193,5 +288,7 @@ namespace HotelManagment.Model
                 }
             }
         }
+
+
     }
 }

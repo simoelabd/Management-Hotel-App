@@ -158,10 +158,10 @@
             btnLogin.FillColor = Color.Teal;
             btnLogin.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnLogin.ForeColor = Color.White;
-            btnLogin.Location = new Point(56, 468);
+            btnLogin.Location = new Point(118, 471);
             btnLogin.Name = "btnLogin";
             btnLogin.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            btnLogin.Size = new Size(151, 41);
+            btnLogin.Size = new Size(139, 41);
             btnLogin.TabIndex = 11;
             btnLogin.Text = "LOGIN";
             btnLogin.Click += btnLogin_Click;

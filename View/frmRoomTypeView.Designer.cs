@@ -57,9 +57,19 @@
             label1.Size = new Size(192, 30);
             label1.Text = "Type Chambre List";
             // 
+            // btnAdd
+            // 
+            btnAdd.DialogResult = DialogResult.None;
+            btnAdd.DisabledState.BorderColor = Color.DarkGray;
+            btnAdd.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnAdd.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnAdd.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnAdd.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnAdd.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            // 
             // label2
             // 
-            label2.Location = new Point(723, 97);
+            label2.Location = new Point(703, 97);
             // 
             // txtSearch
             // 
@@ -69,18 +79,8 @@
             txtSearch.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtSearch.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtSearch.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSearch.Location = new Point(723, 121);
-            txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            // 
-            // btnAdd
-            // 
-            btnAdd.DialogResult = DialogResult.None;
-            btnAdd.DisabledState.BorderColor = Color.DarkGray;
-            btnAdd.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnAdd.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnAdd.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnAdd.ShadowDecoration.CustomizableEdges = customizableEdges3;
-            btnAdd.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            txtSearch.Location = new Point(703, 121);
+            txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges3;
             // 
             // guna2DataGridView1
             // 

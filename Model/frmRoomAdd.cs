@@ -23,16 +23,36 @@ namespace HotelManagment.Model
 
         public override void btnSave_Click(object sender, EventArgs e)
         {
+            // Vérification si les champs nécessaires sont vides
+            if (string.IsNullOrWhiteSpace(txtName.Text) || string.IsNullOrWhiteSpace(txtPrix.Text) || string.IsNullOrWhiteSpace(cbStatus.Text))
+            {
+                guna2MessageDialog1.Show("Please fill in all required fields.");
+                return;
+            }
+
+            // Vérification si le nom de la chambre existe déjà
+            string checkQuery = "SELECT COUNT(*) FROM room WHERE rName = @rName";
+            Hashtable checkParams = new Hashtable();
+            checkParams.Add("@rName", txtName.Text);
+
+            int existingRooms = Convert.ToInt32(MainClass.SQL(checkQuery, checkParams));
+
+            if (existingRooms > 0)
+            {
+                guna2MessageDialog1.Show("A room with this name already exists.");
+                return;
+            }
+
             string qry = "";
-            if (id == 0) //Save
+            if (id == 0) // Save
             {
                 qry = @"INSERT INTO room (rName, rTypeID, rPrix, rStatus) 
-                        VALUES (@rName, @rTypeID, @rPrix, @rStatus)";
+                VALUES (@rName, @rTypeID, @rPrix, @rStatus)";
             }
-            else //update
+            else // Update
             {
-                qry = @"Update room SET rName=@rName, rTypeID=@rTypeID ,rPrix=@rPrix ,rStatus=@rStatus
-                        where roomID = @id ";
+                qry = @"UPDATE room SET rName = @rName, rTypeID = @rTypeID, rPrix = @rPrix, rStatus = @rStatus
+                WHERE roomID = @id";
             }
 
             Hashtable ht = new Hashtable();
@@ -48,13 +68,15 @@ namespace HotelManagment.Model
             {
                 MainClass.ClearAll(this);
                 txtName.Focus();
-
-
-                guna2MessageDialog1.Show("Saved successfully");
+                guna2MessageDialog1.Show("Room Saved successfully");
                 id = 0;
-
+            }
+            else
+            {
+                guna2MessageDialog1.Show("Operation failed. Please try again.");
             }
         }
+
 
         private void frmRoomAdd_Load(object sender, EventArgs e)
         {

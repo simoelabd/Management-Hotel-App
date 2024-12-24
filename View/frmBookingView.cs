@@ -5,10 +5,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
+using Microsoft.Office.Interop.Excel;
 
 namespace HotelManagment.View
 {
@@ -36,7 +42,7 @@ namespace HotelManagment.View
 
         private void LoadData()
         {
-            ListBox lb = new ListBox();
+            System.Windows.Forms.ListBox lb = new System.Windows.Forms.ListBox();
             //lb.Items.Add(dgvSr);
             lb.Items.Add(dgvID);
             lb.Items.Add(dgvcusID);
@@ -117,6 +123,130 @@ namespace HotelManagment.View
                     }
                 }
             }
+
+            //print code
+            if (guna2DataGridView1.CurrentCell.OwningColumn.Name == "dgvPrint" && e.RowIndex != -1)
+            {
+                DataGridViewRow row = guna2DataGridView1.CurrentRow;
+
+                string customerName = row.Cells["dgvCustomer"].Value.ToString();
+                string roomName = row.Cells["dgvRoom"].Value.ToString();
+                string checkIn = Convert.ToDateTime(row.Cells["dgvIn"].Value).ToString("dd/MM/yyyy");
+                string checkOut = Convert.ToDateTime(row.Cells["dgvOut"].Value).ToString("dd/MM/yyyy");
+                string days = row.Cells["dgvDay"].Value.ToString();
+                string amount = row.Cells["dgvAmount"].Value.ToString();
+
+                PrintDocument printDoc = new PrintDocument();
+                printDoc.PrintPage += (s, ev) =>
+                {
+                    // Définir les polices
+                    var titleFont = new System.Drawing.Font("Arial", 16, FontStyle.Bold);
+                    var headerFont = new System.Drawing.Font("Arial", 12, FontStyle.Bold);
+                    var bodyFont = new System.Drawing.Font("Arial", 12);
+
+                    // Couleur de texte
+                    Brush textBrush = Brushes.Black;
+
+                    // Marges et positions
+                    int margin = 20;
+                    int yPos = margin;
+
+                    // Titre du document
+                    ev.Graphics.DrawString("Bon de Réservation", titleFont, textBrush, new System.Drawing.Point(margin, yPos));
+                    yPos += 40;  // Espacement après le titre
+
+                    // Ajouter une ligne de séparation
+                    ev.Graphics.DrawLine(Pens.Black, margin, yPos, ev.PageBounds.Width - margin, yPos);
+                    yPos += 20;  // Espacement après la ligne
+
+                    // Informations client
+                    ev.Graphics.DrawString($"Nom du client : {customerName}", headerFont, textBrush, new System.Drawing.Point(margin, yPos));
+                    yPos += 30;  // Espacement
+
+                    ev.Graphics.DrawString($"Chambre : {roomName}", bodyFont, textBrush, new System.Drawing.Point(margin, yPos));
+                    yPos += 30;
+
+                    ev.Graphics.DrawString($"Date d'arrivée : {checkIn}", bodyFont, textBrush, new System.Drawing.Point(margin, yPos));
+                    yPos += 30;
+
+                    ev.Graphics.DrawString($"Date de départ : {checkOut}", bodyFont, textBrush, new System.Drawing.Point(margin, yPos));
+                    yPos += 30;
+
+                    ev.Graphics.DrawString($"Nombre de jours : {days}", bodyFont, textBrush, new System.Drawing.Point(margin, yPos));
+                    yPos += 30;
+
+                    ev.Graphics.DrawString($"Montant total : {amount} MAD", headerFont, textBrush, new System.Drawing.Point(margin, yPos));
+                    yPos += 40;  // Espacement avant la fin
+
+                    // Ajouter une ligne de séparation en bas
+                    ev.Graphics.DrawLine(Pens.Black, margin, yPos, ev.PageBounds.Width - margin, yPos);
+                };
+                printDoc.Print();
+
+                PrintPreviewDialog previewDialog = new PrintPreviewDialog
+                {
+                    Document = printDoc
+                };
+
+            }
         }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            // Créer une instance d'Excel
+            var excelApp = new Microsoft.Office.Interop.Excel.Application();
+            excelApp.Visible = true;
+
+            // Créer un nouveau classeur
+            var workBook = excelApp.Workbooks.Add();
+            var workSheet = (Microsoft.Office.Interop.Excel.Worksheet)workBook.Sheets[1];
+
+            // Ajouter un titre
+            workSheet.Cells[1, 1] = "Bon de Réservation";
+            workSheet.Cells[2, 1] = "-------------------------------------------------";
+
+            // Ajouter les en-têtes de colonnes
+            workSheet.Cells[3, 1] = "ID Réservation";
+            workSheet.Cells[3, 2] = "ID Client";
+            workSheet.Cells[3, 3] = "Nom du Client";
+            workSheet.Cells[3, 4] = "Chambre";
+            workSheet.Cells[3, 5] = "Date d'Arrivée";
+            workSheet.Cells[3, 6] = "Date de Départ";
+            workSheet.Cells[3, 7] = "Nombre de Jours";
+            workSheet.Cells[3, 8] = "Montant Total";
+            workSheet.Cells[3, 9] = "Statut";
+            workSheet.Cells[3, 10] = "Montant Reçu";
+
+            // Remplir les données du DataGridView dans Excel
+            for (int i = 0; i < guna2DataGridView1.Rows.Count; i++)
+            {
+                workSheet.Cells[i + 4, 1] = guna2DataGridView1.Rows[i].Cells["dgvID"].Value.ToString();
+                workSheet.Cells[i + 4, 2] = guna2DataGridView1.Rows[i].Cells["dgvcusID"].Value.ToString();
+                workSheet.Cells[i + 4, 3] = guna2DataGridView1.Rows[i].Cells["dgvCustomer"].Value.ToString();
+                workSheet.Cells[i + 4, 4] = guna2DataGridView1.Rows[i].Cells["dgvRoom"].Value.ToString();
+                workSheet.Cells[i + 4, 5] = guna2DataGridView1.Rows[i].Cells["dgvIn"].Value.ToString();
+                workSheet.Cells[i + 4, 6] = guna2DataGridView1.Rows[i].Cells["dgvOut"].Value.ToString();
+                workSheet.Cells[i + 4, 7] = guna2DataGridView1.Rows[i].Cells["dgvDay"].Value.ToString();
+                workSheet.Cells[i + 4, 8] = guna2DataGridView1.Rows[i].Cells["dgvAmount"].Value.ToString();
+                workSheet.Cells[i + 4, 9] = guna2DataGridView1.Rows[i].Cells["dgvStatus"].Value.ToString();
+                workSheet.Cells[i + 4, 10] = guna2DataGridView1.Rows[i].Cells["dgvRece"].Value.ToString();
+            }
+
+            // Définir une largeur automatique pour les colonnes
+            workSheet.Columns.AutoFit();
+
+            // Enregistrer le fichier Excel
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Fichier Excel (*.xlsx)|*.xlsx";
+            saveFileDialog.Title = "Enregistrer le fichier Excel";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                workBook.SaveAs(saveFileDialog.FileName);
+                workBook.Close();
+                excelApp.Quit();
+                guna2MessageDialog1.Show("Exportation réussie!");
+            }
+        }
+
     }
 }

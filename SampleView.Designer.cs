@@ -92,7 +92,7 @@
             txtSearch.Font = new Font("Segoe UI", 9F);
             txtSearch.ForeColor = Color.FromArgb(64, 64, 64);
             txtSearch.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSearch.Location = new Point(993, 121);
+            txtSearch.Location = new Point(993, 118);
             txtSearch.Margin = new Padding(3, 4, 3, 4);
             txtSearch.Name = "txtSearch";
             txtSearch.PasswordChar = '\0';
@@ -102,7 +102,6 @@
             txtSearch.Size = new Size(262, 53);
             txtSearch.TabIndex = 5;
             txtSearch.TextChanged += txtSearch_TextChanged;
-            txtSearch.Click += txtSearch_TextChanged;
             // 
             // label2
             // 
@@ -110,7 +109,7 @@
             label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label2.AutoSize = true;
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(993, 97);
+            label2.Location = new Point(993, 94);
             label2.Name = "label2";
             label2.Size = new Size(53, 20);
             label2.TabIndex = 4;
@@ -157,8 +156,8 @@
         public Guna.UI2.WinForms.Guna2MessageDialog guna2MessageDialog1;
         public Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         public Label label1;
+        public Guna.UI2.WinForms.Guna2CircleButton btnAdd;
         public Label label2;
         public Guna.UI2.WinForms.Guna2TextBox txtSearch;
-        public Guna.UI2.WinForms.Guna2CircleButton btnAdd;
     }
 }

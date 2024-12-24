@@ -61,7 +61,7 @@
             // 
             // label2
             // 
-            label2.Location = new Point(1015, 103);
+            label2.Location = new Point(993, 103);
             // 
             // txtSearch
             // 
@@ -71,7 +71,7 @@
             txtSearch.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtSearch.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtSearch.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSearch.Location = new Point(1015, 127);
+            txtSearch.Location = new Point(993, 127);
             txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges2;
             // 
             // btnAdd

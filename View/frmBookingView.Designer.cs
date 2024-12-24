@@ -28,13 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
             dgvSr = new DataGridViewTextBoxColumn();
             dgvID = new DataGridViewTextBoxColumn();
@@ -51,23 +53,42 @@
             dgvRece = new DataGridViewTextBoxColumn();
             dgvedite = new DataGridViewImageColumn();
             dgvDel = new DataGridViewImageColumn();
+            dgvPrint = new DataGridViewImageColumn();
+            printDocument1 = new System.Drawing.Printing.PrintDocument();
+            btnExcel = new Guna.UI2.WinForms.Guna2Button();
             guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).BeginInit();
             SuspendLayout();
             // 
             // guna2Panel1
             // 
-            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges1;
+            guna2Panel1.Controls.Add(btnExcel);
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges3;
             guna2Panel1.Size = new Size(1143, 189);
+            guna2Panel1.Controls.SetChildIndex(label1, 0);
+            guna2Panel1.Controls.SetChildIndex(label2, 0);
+            guna2Panel1.Controls.SetChildIndex(txtSearch, 0);
+            guna2Panel1.Controls.SetChildIndex(btnAdd, 0);
+            guna2Panel1.Controls.SetChildIndex(btnExcel, 0);
             // 
             // label1
             // 
             label1.Size = new Size(174, 30);
             label1.Text = "Reservation Liste";
             // 
+            // btnAdd
+            // 
+            btnAdd.DialogResult = DialogResult.None;
+            btnAdd.DisabledState.BorderColor = Color.DarkGray;
+            btnAdd.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnAdd.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnAdd.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnAdd.ShadowDecoration.CustomizableEdges = customizableEdges5;
+            btnAdd.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            // 
             // label2
             // 
-            label2.Location = new Point(850, 97);
+            label2.Location = new Point(715, 94);
             // 
             // txtSearch
             // 
@@ -77,18 +98,8 @@
             txtSearch.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtSearch.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtSearch.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSearch.Location = new Point(850, 121);
-            txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            // 
-            // btnAdd
-            // 
-            btnAdd.DialogResult = DialogResult.None;
-            btnAdd.DisabledState.BorderColor = Color.DarkGray;
-            btnAdd.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnAdd.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnAdd.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnAdd.ShadowDecoration.CustomizableEdges = customizableEdges3;
-            btnAdd.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            txtSearch.Location = new Point(715, 118);
+            txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges4;
             // 
             // guna2DataGridView1
             // 
@@ -107,7 +118,7 @@
             guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             guna2DataGridView1.ColumnHeadersHeight = 30;
             guna2DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            guna2DataGridView1.Columns.AddRange(new DataGridViewColumn[] { dgvSr, dgvID, dgvcusID, dgvCustomer, dgvRoomID, dgvRoom, dgvIn, dgvOut, dgvDay, dgvPrix, dgvAmount, dgvStatus, dgvRece, dgvedite, dgvDel });
+            guna2DataGridView1.Columns.AddRange(new DataGridViewColumn[] { dgvSr, dgvID, dgvcusID, dgvCustomer, dgvRoomID, dgvRoom, dgvIn, dgvOut, dgvDay, dgvPrix, dgvAmount, dgvStatus, dgvRece, dgvedite, dgvDel, dgvPrint });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9.818182F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -275,6 +286,37 @@
             dgvDel.ReadOnly = true;
             dgvDel.Width = 50;
             // 
+            // dgvPrint
+            // 
+            dgvPrint.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvPrint.FillWeight = 50F;
+            dgvPrint.HeaderText = "";
+            dgvPrint.Image = Properties.Resources.printer;
+            dgvPrint.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            dgvPrint.MinimumWidth = 50;
+            dgvPrint.Name = "dgvPrint";
+            dgvPrint.ReadOnly = true;
+            dgvPrint.Width = 50;
+            // 
+            // btnExcel
+            // 
+            btnExcel.CustomizableEdges = customizableEdges1;
+            btnExcel.DisabledState.BorderColor = Color.DarkGray;
+            btnExcel.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnExcel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnExcel.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnExcel.FillColor = Color.White;
+            btnExcel.Font = new Font("Segoe UI", 9F);
+            btnExcel.ForeColor = Color.Black;
+            btnExcel.Image = Properties.Resources.excel;
+            btnExcel.Location = new Point(983, 118);
+            btnExcel.Name = "btnExcel";
+            btnExcel.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnExcel.Size = new Size(116, 50);
+            btnExcel.TabIndex = 7;
+            btnExcel.Text = "Excel Export";
+            btnExcel.Click += btnExcel_Click;
+            // 
             // frmBookingView
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -295,6 +337,7 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
         private DataGridViewTextBoxColumn dgvSr;
         private DataGridViewTextBoxColumn dgvID;
         private DataGridViewTextBoxColumn dgvcusID;
@@ -310,5 +353,7 @@
         private DataGridViewTextBoxColumn dgvRece;
         private DataGridViewImageColumn dgvedite;
         private DataGridViewImageColumn dgvDel;
+        private DataGridViewImageColumn dgvPrint;
+        private Guna.UI2.WinForms.Guna2Button btnExcel;
     }
 }

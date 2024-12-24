@@ -58,9 +58,20 @@
             label1.Size = new Size(117, 30);
             label1.Text = "Client Liste";
             // 
+            // btnAdd
+            // 
+            btnAdd.DialogResult = DialogResult.None;
+            btnAdd.DisabledState.BorderColor = Color.DarkGray;
+            btnAdd.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnAdd.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnAdd.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnAdd.Location = new Point(43, 115);
+            btnAdd.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnAdd.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            // 
             // label2
             // 
-            label2.Location = new Point(789, 91);
+            label2.Location = new Point(780, 91);
             // 
             // txtSearch
             // 
@@ -70,19 +81,8 @@
             txtSearch.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtSearch.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtSearch.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSearch.Location = new Point(789, 115);
-            txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            // 
-            // btnAdd
-            // 
-            btnAdd.DialogResult = DialogResult.None;
-            btnAdd.DisabledState.BorderColor = Color.DarkGray;
-            btnAdd.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnAdd.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnAdd.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnAdd.Location = new Point(43, 115);
-            btnAdd.ShadowDecoration.CustomizableEdges = customizableEdges3;
-            btnAdd.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            txtSearch.Location = new Point(780, 115);
+            txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges3;
             // 
             // guna2DataGridView1
             // 
