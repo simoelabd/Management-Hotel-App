@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "D:\\ETUDES_4\u00E9me_ann\u00E9es\\C#\\Projet_hotel_managment\\HotelManagment\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{73361143-A4E3-48BA-962E-6852719C486E}|HotelManagment.csproj|d:\\etudes_4\u00E9me_ann\u00E9es\\c#\\projet_hotel_managment\\hotelmanagment\\model\\frmbookingadd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73361143-A4E3-48BA-962E-6852719C486E}|HotelManagment.csproj|solutionrelative:model\\frmbookingadd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{73361143-A4E3-48BA-962E-6852719C486E}|HotelManagment.csproj|d:\\etudes_4\u00E9me_ann\u00E9es\\c#\\projet_hotel_managment\\hotelmanagment\\view\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{73361143-A4E3-48BA-962E-6852719C486E}|HotelManagment.csproj|solutionrelative:view\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73361143-A4E3-48BA-962E-6852719C486E}|HotelManagment.csproj|d:\\etudes_4\u00E9me_ann\u00E9es\\c#\\projet_hotel_managment\\hotelmanagment\\view\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73361143-A4E3-48BA-962E-6852719C486E}|HotelManagment.csproj|solutionrelative:view\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{73361143-A4E3-48BA-962E-6852719C486E}|HotelManagment.csproj|d:\\etudes_4\u00E9me_ann\u00E9es\\c#\\projet_hotel_managment\\hotelmanagment\\mainclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73361143-A4E3-48BA-962E-6852719C486E}|HotelManagment.csproj|solutionrelative:mainclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73361143-A4E3-48BA-962E-6852719C486E}|HotelManagment.csproj|d:\\etudes_4\u00E9me_ann\u00E9es\\c#\\projet_hotel_managment\\hotelmanagment\\view\\frmbookingview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73361143-A4E3-48BA-962E-6852719C486E}|HotelManagment.csproj|solutionrelative:view\\frmbookingview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,46 +22,44 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "MainClass.cs",
               "DocumentMoniker": "D:\\ETUDES_4\u00E9me_ann\u00E9es\\C#\\Projet_hotel_managment\\HotelManagment\\MainClass.cs",
               "RelativeDocumentMoniker": "MainClass.cs",
               "ToolTip": "D:\\ETUDES_4\u00E9me_ann\u00E9es\\C#\\Projet_hotel_managment\\HotelManagment\\MainClass.cs",
               "RelativeToolTip": "MainClass.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-24T13:13:39.074Z",
+              "WhenOpened": "2024-12-30T12:47:30.303Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmDashboard.cs",
+              "DocumentMoniker": "D:\\ETUDES_4\u00E9me_ann\u00E9es\\C#\\Projet_hotel_managment\\HotelManagment\\View\\frmDashboard.cs",
+              "RelativeDocumentMoniker": "View\\frmDashboard.cs",
+              "ToolTip": "D:\\ETUDES_4\u00E9me_ann\u00E9es\\C#\\Projet_hotel_managment\\HotelManagment\\View\\frmDashboard.cs",
+              "RelativeToolTip": "View\\frmDashboard.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFMAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-27T19:03:00.364Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "frmBookingAdd.cs",
-              "DocumentMoniker": "D:\\ETUDES_4\u00E9me_ann\u00E9es\\C#\\Projet_hotel_managment\\HotelManagment\\Model\\frmBookingAdd.cs",
-              "RelativeDocumentMoniker": "Model\\frmBookingAdd.cs",
-              "ToolTip": "D:\\ETUDES_4\u00E9me_ann\u00E9es\\C#\\Projet_hotel_managment\\HotelManagment\\Model\\frmBookingAdd.cs",
-              "RelativeToolTip": "Model\\frmBookingAdd.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAlwDQAAAAQAAAAAAAAAA==",
+              "Title": "frmDashboard.cs [Design]",
+              "DocumentMoniker": "D:\\ETUDES_4\u00E9me_ann\u00E9es\\C#\\Projet_hotel_managment\\HotelManagment\\View\\frmDashboard.cs",
+              "RelativeDocumentMoniker": "View\\frmDashboard.cs",
+              "ToolTip": "D:\\ETUDES_4\u00E9me_ann\u00E9es\\C#\\Projet_hotel_managment\\HotelManagment\\View\\frmDashboard.cs [Design]",
+              "RelativeToolTip": "View\\frmDashboard.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-24T13:01:36.607Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "frmBookingView.cs",
-              "DocumentMoniker": "D:\\ETUDES_4\u00E9me_ann\u00E9es\\C#\\Projet_hotel_managment\\HotelManagment\\View\\frmBookingView.cs",
-              "RelativeDocumentMoniker": "View\\frmBookingView.cs",
-              "ToolTip": "D:\\ETUDES_4\u00E9me_ann\u00E9es\\C#\\Projet_hotel_managment\\HotelManagment\\View\\frmBookingView.cs",
-              "RelativeToolTip": "View\\frmBookingView.cs",
-              "ViewState": "AgIAALwAAAAAAAAAAAAswMQAAABMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-23T20:53:38.797Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-27T18:19:21.732Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

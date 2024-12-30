@@ -15,6 +15,7 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
 using Microsoft.Office.Interop.Excel;
+using OfficeOpenXml;
 
 namespace HotelManagment.View
 {
@@ -124,7 +125,9 @@ namespace HotelManagment.View
                 }
             }
 
-            //print code
+            
+
+            //print code de bone de reservation 
             if (guna2DataGridView1.CurrentCell.OwningColumn.Name == "dgvPrint" && e.RowIndex != -1)
             {
                 DataGridViewRow row = guna2DataGridView1.CurrentRow;
@@ -140,113 +143,124 @@ namespace HotelManagment.View
                 printDoc.PrintPage += (s, ev) =>
                 {
                     // Définir les polices
-                    var titleFont = new System.Drawing.Font("Arial", 16, FontStyle.Bold);
-                    var headerFont = new System.Drawing.Font("Arial", 12, FontStyle.Bold);
+                    var titleFont = new System.Drawing.Font("Arial", 18, FontStyle.Bold);
+                    var headerFont = new System.Drawing.Font("Arial", 14, FontStyle.Bold);
                     var bodyFont = new System.Drawing.Font("Arial", 12);
 
                     // Couleur de texte
                     Brush textBrush = Brushes.Black;
 
                     // Marges et positions
-                    int margin = 20;
+                    int margin = 40;
                     int yPos = margin;
 
+                    // Ajouter le logo avec une taille plus grande
+                    System.Drawing.Image logo = System.Drawing.Image.FromFile("LogoHotel1.png");
+                    ev.Graphics.DrawImage(logo, new System.Drawing.Rectangle(margin, yPos, 150, 100)); // Logo plus grand
+                    yPos += 120;
+
                     // Titre du document
-                    ev.Graphics.DrawString("Bon de Réservation", titleFont, textBrush, new System.Drawing.Point(margin, yPos));
-                    yPos += 40;  // Espacement après le titre
+                    ev.Graphics.DrawString("BON DE RÉSERVATION", titleFont, textBrush, margin + 150, yPos);
+                    yPos += 40;
+
+                    // Informations client
+                    ev.Graphics.DrawString($"Nom du client : {customerName}", headerFont, textBrush, margin, yPos);
+                    yPos += 30;
+                    ev.Graphics.DrawString($"Chambre : {roomName}", bodyFont, textBrush, margin, yPos);
+                    yPos += 30;
+                    ev.Graphics.DrawString($"Date d'arrivée : {checkIn}", bodyFont, textBrush, margin, yPos);
+                    yPos += 30;
+                    ev.Graphics.DrawString($"Date de départ : {checkOut}", bodyFont, textBrush, margin, yPos);
+                    yPos += 30;
+                    ev.Graphics.DrawString($"Nombre de jours : {days}", bodyFont, textBrush, margin, yPos);
+                    yPos += 30;
+                    ev.Graphics.DrawString($"Montant total : {amount} MAD", headerFont, textBrush, margin, yPos);
+                    yPos += 40;
 
                     // Ajouter une ligne de séparation
                     ev.Graphics.DrawLine(Pens.Black, margin, yPos, ev.PageBounds.Width - margin, yPos);
-                    yPos += 20;  // Espacement après la ligne
+                    yPos += 20;
 
-                    // Informations client
-                    ev.Graphics.DrawString($"Nom du client : {customerName}", headerFont, textBrush, new System.Drawing.Point(margin, yPos));
-                    yPos += 30;  // Espacement
-
-                    ev.Graphics.DrawString($"Chambre : {roomName}", bodyFont, textBrush, new System.Drawing.Point(margin, yPos));
-                    yPos += 30;
-
-                    ev.Graphics.DrawString($"Date d'arrivée : {checkIn}", bodyFont, textBrush, new System.Drawing.Point(margin, yPos));
-                    yPos += 30;
-
-                    ev.Graphics.DrawString($"Date de départ : {checkOut}", bodyFont, textBrush, new System.Drawing.Point(margin, yPos));
-                    yPos += 30;
-
-                    ev.Graphics.DrawString($"Nombre de jours : {days}", bodyFont, textBrush, new System.Drawing.Point(margin, yPos));
-                    yPos += 30;
-
-                    ev.Graphics.DrawString($"Montant total : {amount} MAD", headerFont, textBrush, new System.Drawing.Point(margin, yPos));
-                    yPos += 40;  // Espacement avant la fin
-
-                    // Ajouter une ligne de séparation en bas
-                    ev.Graphics.DrawLine(Pens.Black, margin, yPos, ev.PageBounds.Width - margin, yPos);
+                    // Message de remerciement
+                    ev.Graphics.DrawString("Merci d'avoir choisi notre hôtel. Nous vous souhaitons un excellent séjour!", bodyFont, textBrush, margin, yPos);
                 };
-                printDoc.Print();
 
                 PrintPreviewDialog previewDialog = new PrintPreviewDialog
                 {
                     Document = printDoc
                 };
 
+                previewDialog.ShowDialog();
             }
         }
 
         private void btnExcel_Click(object sender, EventArgs e)
         {
-            // Créer une instance d'Excel
-            var excelApp = new Microsoft.Office.Interop.Excel.Application();
-            excelApp.Visible = true;
-
-            // Créer un nouveau classeur
-            var workBook = excelApp.Workbooks.Add();
-            var workSheet = (Microsoft.Office.Interop.Excel.Worksheet)workBook.Sheets[1];
-
-            // Ajouter un titre
-            workSheet.Cells[1, 1] = "Bon de Réservation";
-            workSheet.Cells[2, 1] = "-------------------------------------------------";
-
-            // Ajouter les en-têtes de colonnes
-            workSheet.Cells[3, 1] = "ID Réservation";
-            workSheet.Cells[3, 2] = "ID Client";
-            workSheet.Cells[3, 3] = "Nom du Client";
-            workSheet.Cells[3, 4] = "Chambre";
-            workSheet.Cells[3, 5] = "Date d'Arrivée";
-            workSheet.Cells[3, 6] = "Date de Départ";
-            workSheet.Cells[3, 7] = "Nombre de Jours";
-            workSheet.Cells[3, 8] = "Montant Total";
-            workSheet.Cells[3, 9] = "Statut";
-            workSheet.Cells[3, 10] = "Montant Reçu";
-
-            // Remplir les données du DataGridView dans Excel
-            for (int i = 0; i < guna2DataGridView1.Rows.Count; i++)
+            try
             {
-                workSheet.Cells[i + 4, 1] = guna2DataGridView1.Rows[i].Cells["dgvID"].Value.ToString();
-                workSheet.Cells[i + 4, 2] = guna2DataGridView1.Rows[i].Cells["dgvcusID"].Value.ToString();
-                workSheet.Cells[i + 4, 3] = guna2DataGridView1.Rows[i].Cells["dgvCustomer"].Value.ToString();
-                workSheet.Cells[i + 4, 4] = guna2DataGridView1.Rows[i].Cells["dgvRoom"].Value.ToString();
-                workSheet.Cells[i + 4, 5] = guna2DataGridView1.Rows[i].Cells["dgvIn"].Value.ToString();
-                workSheet.Cells[i + 4, 6] = guna2DataGridView1.Rows[i].Cells["dgvOut"].Value.ToString();
-                workSheet.Cells[i + 4, 7] = guna2DataGridView1.Rows[i].Cells["dgvDay"].Value.ToString();
-                workSheet.Cells[i + 4, 8] = guna2DataGridView1.Rows[i].Cells["dgvAmount"].Value.ToString();
-                workSheet.Cells[i + 4, 9] = guna2DataGridView1.Rows[i].Cells["dgvStatus"].Value.ToString();
-                workSheet.Cells[i + 4, 10] = guna2DataGridView1.Rows[i].Cells["dgvRece"].Value.ToString();
+                // Définit le contexte de licence pour EPPlus
+                ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+
+                // Crée un nouveau fichier Excel
+                using (var package = new OfficeOpenXml.ExcelPackage())
+                {
+                    // Crée une feuille de calcul
+                    var worksheet = package.Workbook.Worksheets.Add("Réservations");
+
+                    // Définir les en-têtes
+                    worksheet.Cells[1, 1].Value = "ID Réservation";
+                    worksheet.Cells[1, 2].Value = "Nom du Client";
+                    worksheet.Cells[1, 3].Value = "Chambre";
+                    worksheet.Cells[1, 4].Value = "Date d'Arrivée";
+                    worksheet.Cells[1, 5].Value = "Date de Départ";
+                    worksheet.Cells[1, 6].Value = "Nombre de Jours";
+                    worksheet.Cells[1, 7].Value = "Montant Total";
+                    worksheet.Cells[1, 8].Value = "Montant Reçu";
+
+                    // Remplir les données depuis le DataGridView
+                    for (int i = 0; i < guna2DataGridView1.Rows.Count; i++)
+                    {
+                        // Vérifie si la ligne n'est pas vide (ignorer les nouvelles lignes)
+                        if (!guna2DataGridView1.Rows[i].IsNewRow)
+                        {
+                            worksheet.Cells[i + 2, 1].Value = guna2DataGridView1.Rows[i].Cells["dgvID"].Value?.ToString() ?? "";
+                            worksheet.Cells[i + 2, 2].Value = guna2DataGridView1.Rows[i].Cells["dgvCustomer"].Value?.ToString() ?? "";
+                            worksheet.Cells[i + 2, 3].Value = guna2DataGridView1.Rows[i].Cells["dgvRoom"].Value?.ToString() ?? "";
+                            worksheet.Cells[i + 2, 4].Value = guna2DataGridView1.Rows[i].Cells["dgvIn"].Value?.ToString() ?? "";
+                            worksheet.Cells[i + 2, 5].Value = guna2DataGridView1.Rows[i].Cells["dgvOut"].Value?.ToString() ?? "";
+                            worksheet.Cells[i + 2, 6].Value = guna2DataGridView1.Rows[i].Cells["dgvDay"].Value?.ToString() ?? "";
+                            worksheet.Cells[i + 2, 7].Value = $"{guna2DataGridView1.Rows[i].Cells["dgvAmount"].Value?.ToString() ?? ""} DH";
+                            worksheet.Cells[i + 2, 8].Value = guna2DataGridView1.Rows[i].Cells["dgvRece"].Value?.ToString() ?? "";
+                        }
+                    }
+
+                    // Ouvre la boîte de dialogue pour sauvegarder le fichier
+                    SaveFileDialog saveFileDialog = new SaveFileDialog
+                    {
+                        Filter = "Fichiers Excel (*.xlsx)|*.xlsx",
+                        Title = "Exporter vers Excel"
+                    };
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        // Enregistre le fichier Excel
+                        FileInfo fileInfo = new FileInfo(saveFileDialog.FileName);
+                        package.SaveAs(fileInfo);
+
+                        // Message de confirmation
+                        MessageBox.Show("Exportation réussie !");
+                    }
+                }
             }
-
-            // Définir une largeur automatique pour les colonnes
-            workSheet.Columns.AutoFit();
-
-            // Enregistrer le fichier Excel
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Fichier Excel (*.xlsx)|*.xlsx";
-            saveFileDialog.Title = "Enregistrer le fichier Excel";
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            catch (Exception ex)
             {
-                workBook.SaveAs(saveFileDialog.FileName);
-                workBook.Close();
-                excelApp.Quit();
-                guna2MessageDialog1.Show("Exportation réussie!");
+                MessageBox.Show("Erreur lors de l'exportation : " + ex.Message);
             }
         }
+
+
+
+
 
     }
 }

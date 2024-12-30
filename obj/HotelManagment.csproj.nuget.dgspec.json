@@ -64,7 +64,7 @@
             },
             "Microsoft.Office.Interop.Excel": {
               "target": "Package",
-              "version": "[15.0.4420.1017, )"
+              "version": "[15.0.4795.1001, )"
             },
             "MySql.Data": {
               "target": "Package",

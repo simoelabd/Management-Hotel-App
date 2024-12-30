@@ -11,7 +11,7 @@
           "EPPlus": "7.5.2",
           "Guna.UI2.WinForms": "2.0.4.6",
           "Microsoft.Data.SqlClient": "5.2.2",
-          "Microsoft.Office.Interop.Excel": "15.0.4420.1017",
+          "Microsoft.Office.Interop.Excel": "15.0.4795.1001",
           "MySql.Data": "9.1.0",
           "iTextSharp": "5.5.13.4"
         },
@@ -450,11 +450,11 @@
       },
       "Microsoft.NETCore.Platforms/1.1.0": {},
       "Microsoft.NETCore.Targets/1.1.0": {},
-      "Microsoft.Office.Interop.Excel/15.0.4420.1017": {
+      "Microsoft.Office.Interop.Excel/15.0.4795.1001": {
         "runtime": {
-          "lib/net20/Microsoft.Office.Interop.Excel.dll": {
+          "lib/netstandard2.0/Microsoft.Office.Interop.Excel.dll": {
             "assemblyVersion": "15.0.0.0",
-            "fileVersion": "15.0.4420.1017"
+            "fileVersion": "15.0.4795.1000"
           }
         }
       },
@@ -969,12 +969,12 @@
       "path": "microsoft.netcore.targets/1.1.0",
       "hashPath": "microsoft.netcore.targets.1.1.0.nupkg.sha512"
     },
-    "Microsoft.Office.Interop.Excel/15.0.4420.1017": {
+    "Microsoft.Office.Interop.Excel/15.0.4795.1001": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-O0X1z0mnmqlrFzWk0u0yMwY6eVu76LnsEyqptlRPHxxDMNuy8kUIer77abvfszgrnA+4EBLcDnllRbRkCUp9vA==",
-      "path": "microsoft.office.interop.excel/15.0.4420.1017",
-      "hashPath": "microsoft.office.interop.excel.15.0.4420.1017.nupkg.sha512"
+      "sha512": "sha512-cuvqi/U5MYSM0gvR2l90q0m/urRgmg69EiwP5VWp1RcaJ0YT5G26Va5LaOZ3KJFc22FNihS5CUjeePUp2YpGQA==",
+      "path": "microsoft.office.interop.excel/15.0.4795.1001",
+      "hashPath": "microsoft.office.interop.excel.15.0.4795.1001.nupkg.sha512"
     },
     "Microsoft.SqlServer.Server/1.0.0": {
       "type": "package",
