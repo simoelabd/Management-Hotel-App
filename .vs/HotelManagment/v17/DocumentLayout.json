@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "D:\\ETUDES_4\u00E9me_ann\u00E9es\\C#\\Projet_hotel_managment\\HotelManagment\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{73361143-A4E3-48BA-962E-6852719C486E}|HotelManagment.csproj|d:\\etudes_4\u00E9me_ann\u00E9es\\c#\\projet_hotel_managment\\hotelmanagment\\view\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{73361143-A4E3-48BA-962E-6852719C486E}|HotelManagment.csproj|solutionrelative:view\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{73361143-A4E3-48BA-962E-6852719C486E}|HotelManagment.csproj|d:\\etudes_4\u00E9me_ann\u00E9es\\c#\\projet_hotel_managment\\hotelmanagment\\model\\frmbookingadd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73361143-A4E3-48BA-962E-6852719C486E}|HotelManagment.csproj|solutionrelative:model\\frmbookingadd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73361143-A4E3-48BA-962E-6852719C486E}|HotelManagment.csproj|d:\\etudes_4\u00E9me_ann\u00E9es\\c#\\projet_hotel_managment\\hotelmanagment\\view\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73361143-A4E3-48BA-962E-6852719C486E}|HotelManagment.csproj|solutionrelative:view\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{73361143-A4E3-48BA-962E-6852719C486E}|HotelManagment.csproj|D:\\ETUDES_4\u00E9me_ann\u00E9es\\C#\\Projet_hotel_managment\\HotelManagment\\model\\frmbookingadd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{73361143-A4E3-48BA-962E-6852719C486E}|HotelManagment.csproj|solutionrelative:model\\frmbookingadd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73361143-A4E3-48BA-962E-6852719C486E}|HotelManagment.csproj|d:\\etudes_4\u00E9me_ann\u00E9es\\c#\\projet_hotel_managment\\hotelmanagment\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73361143-A4E3-48BA-962E-6852719C486E}|HotelManagment.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73361143-A4E3-48BA-962E-6852719C486E}|HotelManagment.csproj|d:\\etudes_4\u00E9me_ann\u00E9es\\c#\\projet_hotel_managment\\hotelmanagment\\view\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{73361143-A4E3-48BA-962E-6852719C486E}|HotelManagment.csproj|solutionrelative:view\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +26,61 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "frmDashboard.cs",
-              "DocumentMoniker": "D:\\ETUDES_4\u00E9me_ann\u00E9es\\C#\\Projet_hotel_managment\\HotelManagment\\View\\frmDashboard.cs",
-              "RelativeDocumentMoniker": "View\\frmDashboard.cs",
-              "ToolTip": "D:\\ETUDES_4\u00E9me_ann\u00E9es\\C#\\Projet_hotel_managment\\HotelManagment\\View\\frmDashboard.cs",
-              "RelativeToolTip": "View\\frmDashboard.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFMAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-27T19:03:00.364Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "frmDashboard.cs [Design]",
               "DocumentMoniker": "D:\\ETUDES_4\u00E9me_ann\u00E9es\\C#\\Projet_hotel_managment\\HotelManagment\\View\\frmDashboard.cs",
               "RelativeDocumentMoniker": "View\\frmDashboard.cs",
               "ToolTip": "D:\\ETUDES_4\u00E9me_ann\u00E9es\\C#\\Projet_hotel_managment\\HotelManagment\\View\\frmDashboard.cs [Design]",
               "RelativeToolTip": "View\\frmDashboard.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-27T18:19:21.732Z",
+              "WhenOpened": "2025-01-02T16:45:51.539Z",
               "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\ETUDES_4\u00E9me_ann\u00E9es\\C#\\Projet_hotel_managment\\HotelManagment\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\ETUDES_4\u00E9me_ann\u00E9es\\C#\\Projet_hotel_managment\\HotelManagment\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T16:44:14.153Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmBookingAdd.cs [Design]",
+              "DocumentMoniker": "D:\\ETUDES_4\u00E9me_ann\u00E9es\\C#\\Projet_hotel_managment\\HotelManagment\\Model\\frmBookingAdd.cs",
+              "RelativeDocumentMoniker": "Model\\frmBookingAdd.cs",
+              "ToolTip": "D:\\ETUDES_4\u00E9me_ann\u00E9es\\C#\\Projet_hotel_managment\\HotelManagment\\Model\\frmBookingAdd.cs [Design]",
+              "RelativeToolTip": "Model\\frmBookingAdd.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-31T19:47:54.678Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "frmBookingAdd.cs",
+              "DocumentMoniker": "D:\\ETUDES_4\u00E9me_ann\u00E9es\\C#\\Projet_hotel_managment\\HotelManagment\\Model\\frmBookingAdd.cs",
+              "RelativeDocumentMoniker": "Model\\frmBookingAdd.cs",
+              "ToolTip": "D:\\ETUDES_4\u00E9me_ann\u00E9es\\C#\\Projet_hotel_managment\\HotelManagment\\Model\\frmBookingAdd.cs",
+              "RelativeToolTip": "Model\\frmBookingAdd.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-31T19:47:40.869Z",
+              "EditorCaption": ""
             }
           ]
         }

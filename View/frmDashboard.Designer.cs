@@ -60,7 +60,7 @@
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(totalReservation);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(12, 47);
+            panel1.Location = new Point(136, 88);
             panel1.Name = "panel1";
             panel1.Size = new Size(250, 130);
             panel1.TabIndex = 0;
@@ -103,7 +103,7 @@
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(totalChambres);
             panel2.Controls.Add(label4);
-            panel2.Location = new Point(277, 47);
+            panel2.Location = new Point(401, 88);
             panel2.Name = "panel2";
             panel2.Size = new Size(250, 130);
             panel2.TabIndex = 1;
@@ -146,7 +146,7 @@
             panel3.Controls.Add(pictureBox3);
             panel3.Controls.Add(totalClients);
             panel3.Controls.Add(label6);
-            panel3.Location = new Point(543, 47);
+            panel3.Location = new Point(667, 88);
             panel3.Name = "panel3";
             panel3.Size = new Size(250, 130);
             panel3.TabIndex = 3;
@@ -189,7 +189,7 @@
             panel4.Controls.Add(pictureBox4);
             panel4.Controls.Add(totalUsers);
             panel4.Controls.Add(label8);
-            panel4.Location = new Point(810, 47);
+            panel4.Location = new Point(934, 88);
             panel4.Name = "panel4";
             panel4.Size = new Size(250, 130);
             panel4.TabIndex = 3;
@@ -230,7 +230,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1072, 611);
+            ClientSize = new Size(1372, 758);
             Controls.Add(panel4);
             Controls.Add(panel3);
             Controls.Add(panel2);

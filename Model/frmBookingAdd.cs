@@ -33,6 +33,7 @@ namespace HotelManagment.Model
             string qry1 = @"Select cusID 'id', cName 'name' from customers";
             MainClass.CBFill(qry1, cbCustomer);
 
+            // Charger toutes les chambres, pas seulement celles disponibles
             string qry2 = @"Select roomID 'id', rName 'name' from room";
             MainClass.CBFill(qry2, cbRoom);
 
@@ -40,11 +41,19 @@ namespace HotelManagment.Model
 
             if (id > 0)
             {
+                // Sélectionner les valeurs précédentes pour la modification
                 cbRoom.SelectedValue = roomID;
                 cbCustomer.SelectedValue = custID;
-            }
 
+                // Filtrer les chambres disponibles après avoir défini la valeur sélectionnée
+                string qry3 = @"Select roomID 'id', rName 'name' from room where rStatus = 'Available' or roomID = " + roomID;
+                MainClass.CBFill(qry3, cbRoom);
+
+                // Définir la valeur automatiquement après rechargement des données
+                cbRoom.SelectedValue = roomID;
+            }
         }
+
 
         private void calDays()
         {
@@ -88,11 +97,13 @@ namespace HotelManagment.Model
                 return; // Arrêter l'exécution si un champ est manquant
             }
 
-            if (id == 0) // Save
+            bool isNewRecord = id == 0; // Vérifier si c'est une nouvelle insertion ou une mise à jour
+
+            if (isNewRecord) // Save
             {
                 qry = @"INSERT INTO bookings (customerID, roomID, checkinDate, checkoutDate, status, days, prix, 
                     amount, received, `change`) 
-                VALUES (@customerID, @roomID, @checkinDate, @checkoutDate, @status, @days, 
+                    VALUES (@customerID, @roomID, @checkinDate, @checkoutDate, @status, @days, 
                     @prix, @amount, @received, @change)";
             }
             else // Update
@@ -149,20 +160,22 @@ namespace HotelManagment.Model
 
                 MainClass.SQL(qry2, ht2);
 
-                
                 if (r > 0)
                 {
-                    // Envoi d'email après insertion/mise à jour
-                    string emailClient = RecupererEmailClient(customerID);
-
-                    if (!string.IsNullOrEmpty(emailClient))
+                    // Envoi d'email uniquement pour une nouvelle insertion
+                    if (isNewRecord)
                     {
-                        string sujet = "Confirmation de réservation";
-                        string corpsMessage = $"Bonjour,\n\nVotre réservation pour la chambre '{cbRoom.Text}' " +
-                            $"du {checkinDate:dd/MM/yyyy} au {checkoutDate:dd/MM/yyyy} a été confirmée.\n\n" +
-                            $"Montant total : {amount} MAD.\n\nMerci de nous avoir choisir !";
+                        string emailClient = RecupererEmailClient(customerID);
 
-                        EnvoyerEmailReservation(emailClient, sujet, corpsMessage);
+                        if (!string.IsNullOrEmpty(emailClient))
+                        {
+                            string sujet = "Confirmation de réservation";
+                            string corpsMessage = $"Bonjour,\n\nVotre réservation pour la chambre '{cbRoom.Text}' " +
+                                $"du {checkinDate:dd/MM/yyyy} au {checkoutDate:dd/MM/yyyy} a été confirmée.\n\n" +
+                                $"Montant total : {amount} MAD.\n\nMerci de nous avoir choisir !";
+
+                            EnvoyerEmailReservation(emailClient, sujet, corpsMessage);
+                        }
                     }
                     MainClass.ClearAll(this);
                     guna2MessageDialog1.Show("Saved successfully");
@@ -174,6 +187,7 @@ namespace HotelManagment.Model
                 guna2MessageDialog1.Show("Une erreur est survenue : " + ex.Message);
             }
         }
+
 
         private string RecupererEmailClient(int customerID)
         {
@@ -239,7 +253,8 @@ namespace HotelManagment.Model
         }
 
 
-        private void txtRece_TextChanged(object sender, EventArgs e) {
+        private void txtRece_TextChanged(object sender, EventArgs e)
+        {
             // Vérifier que les champs ne sont pas vides
             if (!string.IsNullOrWhiteSpace(txtAmount.Text) && !string.IsNullOrWhiteSpace(txtRece.Text))
             {
@@ -274,21 +289,19 @@ namespace HotelManagment.Model
 
         private void cbRoom_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cbRoom.SelectedIndex != -1)
+            if (cbRoom.SelectedIndex != -1)
             {
-                string qry = @"Select rPrix from Room where roomID = "+cbRoom.SelectedValue+"";
-                MySqlCommand cmd = new MySqlCommand(qry,MainClass.con);
+                string qry = @"Select rPrix from Room where roomID = " + cbRoom.SelectedValue + "";
+                MySqlCommand cmd = new MySqlCommand(qry, MainClass.con);
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
-                if(dt.Rows.Count > 0)
+                if (dt.Rows.Count > 0)
                 {
                     txtPrix.Text = dt.Rows[0]["rPrix"].ToString();
                 }
             }
         }
-
-
     }
 }
