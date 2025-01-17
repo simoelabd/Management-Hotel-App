@@ -257,10 +257,5 @@ namespace HotelManagment.View
                 MessageBox.Show("Erreur lors de l'exportation : " + ex.Message);
             }
         }
-
-
-
-
-
     }
 }

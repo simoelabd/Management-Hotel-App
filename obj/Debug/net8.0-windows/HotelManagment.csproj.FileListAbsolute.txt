@@ -100,3 +100,4 @@ D:\ETUDES_4éme_années\C#\Projet_hotel_managment\HotelManagment\bin\Debug\net8.
 D:\ETUDES_4éme_années\C#\Projet_hotel_managment\HotelManagment\bin\Debug\net8.0-windows\System.Drawing.Common.dll
 D:\ETUDES_4éme_années\C#\Projet_hotel_managment\HotelManagment\bin\Debug\net8.0-windows\System.Security.Cryptography.Pkcs.dll
 D:\ETUDES_4éme_années\C#\Projet_hotel_managment\HotelManagment\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+D:\ETUDES_4éme_années\C#\Projet_hotel_managment\HotelManagment\obj\Debug\net8.0-windows\HotelManagment.View.frmWebBookingView.resources

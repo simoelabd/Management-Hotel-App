@@ -88,7 +88,7 @@
             // 
             // label2
             // 
-            label2.Location = new Point(715, 94);
+            label2.Location = new Point(715, 91);
             // 
             // txtSearch
             // 
@@ -98,7 +98,7 @@
             txtSearch.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtSearch.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtSearch.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSearch.Location = new Point(715, 118);
+            txtSearch.Location = new Point(715, 115);
             txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges4;
             // 
             // guna2DataGridView1
@@ -309,7 +309,7 @@
             btnExcel.Font = new Font("Segoe UI", 9F);
             btnExcel.ForeColor = Color.Black;
             btnExcel.Image = Properties.Resources.excel;
-            btnExcel.Location = new Point(983, 118);
+            btnExcel.Location = new Point(583, 115);
             btnExcel.Name = "btnExcel";
             btnExcel.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnExcel.Size = new Size(116, 50);
@@ -338,6 +338,7 @@
 
         private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
         private System.Drawing.Printing.PrintDocument printDocument1;
+        private Guna.UI2.WinForms.Guna2Button btnExcel;
         private DataGridViewTextBoxColumn dgvSr;
         private DataGridViewTextBoxColumn dgvID;
         private DataGridViewTextBoxColumn dgvcusID;
@@ -354,6 +355,5 @@
         private DataGridViewImageColumn dgvedite;
         private DataGridViewImageColumn dgvDel;
         private DataGridViewImageColumn dgvPrint;
-        private Guna.UI2.WinForms.Guna2Button btnExcel;
     }
 }
